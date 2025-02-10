@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "cubing": "^0.54.1",
     "nuxt": "^3.15.4",
     "vue": "latest",
     "vue-router": "latest"
