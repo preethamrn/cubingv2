@@ -3,9 +3,10 @@
   <div class="fmc-grid">
     <div id="player"></div>
     <div>
-      <button @click="connect">Connect</button><br />
-      <button @click="disconnect">Disconnect</button><br />
+      <button v-if="!bluetoothPuzzle" @click="connect">Connect</button>
+      <button v-else @click="disconnect">Disconnect</button><br />
       <button @click="reset">Reset</button><br />
+      <input type="checkbox" v-model="acceptAll"><span style='color: white'>Accept All Devices</span><br />
     </div>
   </div>
 </template>
@@ -36,8 +37,11 @@ const handleMove = (e: MoveEvent) => {
 }
 
 let bluetoothPuzzle: BluetoothPuzzle | null = null;
+const acceptAll = ref(false)
 const connect = async () => {
-  bluetoothPuzzle = await connectSmartPuzzle()
+  bluetoothPuzzle = await connectSmartPuzzle({
+    acceptAllDevices: acceptAll.value,
+  })
   bluetoothPuzzle.addAlgLeafListener(handleMove)
   console.log('connected', bluetoothPuzzle)
   // bluetoothPuzzle.addOrientationListener((e) => {
