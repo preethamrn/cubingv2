@@ -1,14 +1,18 @@
 <template>
-  <div>
-    <!-- TODO: add cube display -->
-    <!-- TODO: integrate bluetooth connection-->
-    <!-- TODO: bluetooth move will transform the cube display -->
-    <!-- TODO: verify rotations also work -->
+  <div class="fmc-live-page">
+    <Player />
   </div>
 </template>
 
 <script lang="ts" setup>
-
+useHead({
+  title: 'FMCLive',
+})
 </script>
 
-<style></style>
+<style scoped>
+.fmc-live-page {
+  background: #000;
+  padding: 30px;
+}
+</style>
